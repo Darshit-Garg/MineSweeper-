@@ -1,0 +1,352 @@
+package com.mycompany.minesweeper;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.scene.control.Label;
+import java.util.Random;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
+import javafx.scene.text.Font;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.text.FontWeight;
+
+
+
+public class Controller implements Initializable {
+    @FXML private GridPane Board;
+    @FXML private Label GameOver;
+    @FXML private AnchorPane Anchor;
+    @FXML private Button Restart;
+    @FXML private Label Head;
+    
+    int ROW = 9;
+    int COL = 9;
+    int MINES = 10;
+    MediaPlayer MP;
+    MediaView MV;
+    int NonMines = ROW*COL-MINES;
+    int NumOfRevealed = 0;
+    private final Button[][] buttons = new Button[COL][ROW];
+    private final Label[][] labels = new Label[COL][ROW];
+    int[][] Mines = new int[MINES][2];
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        GameOver.setVisible(false);
+        String path = App.class.getResource("Bomb.mp4").toExternalForm();
+        Media M = new Media(path);
+        MP = new MediaPlayer(M);
+        MV = new MediaView(MP);
+        MV.setPreserveRatio(false);
+        
+        MV.fitWidthProperty().bind(Anchor.widthProperty());
+        MV.fitHeightProperty().bind(Anchor.heightProperty());
+        AnchorPane.setLeftAnchor(MV, 0.0);
+        AnchorPane.setTopAnchor(MV, 0.0);
+        MP.setOnEndOfMedia(()->{
+                Anchor.getChildren().remove(MV);
+                for(int i = 0; i < MINES; i++) {
+                    int col = Mines[i][0];
+                    int row = Mines[i][1];
+                    labels[col][row].setVisible(true);
+                }
+
+                GameOver.setVisible(true);
+                
+                for (int col = 0; col < COL; col++) {
+                    for (int row = 0; row < ROW; row++) {
+                        buttons[col][row].setDisable(true);
+                    }
+                }
+            }
+        );
+        Restart.setStyle(
+            "-fx-background-color: #505050;"
+        );
+        Restart.setOnMouseClicked(event->{        
+            GameOver.setVisible(false);
+            Head.setText("Sweep The Mines!");
+            Head.setFont(Font.font("Times New Roman",FontWeight.BOLD,24));
+            NumOfRevealed = 0;
+            for (int col = 0; col < COL; col++) {
+                for (int row = 0; row < ROW; row++) {
+                    labels[col][row].setText("0");
+                    labels[col][row].setVisible(false);
+
+                    buttons[col][row].setDisable(false);
+                    buttons[col][row].setVisible(true);
+                    buttons[col][row].setText(""); // Clear any flag ("🚩")
+                }
+            }
+
+            PopulateLabels(); 
+
+            for(int i = 0; i < COL; i++)
+            {
+                for(int j = 0; j < ROW; j++)
+                {
+                    labels[i][j].setFont(Font.font("Times New Roman", 25)); 
+                    String text = labels[i][j].getText();
+
+                    if("1".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #00D0FF;"); }
+                    else if("2".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #00FF7F;"); }
+                    else if("3".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #FF4040;"); }
+                    else if("4".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #5050FF;"); }
+                    else if("5".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #FFA500;"); }
+                    else if("6".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #00FFFF;"); }
+                    else if("7".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #FFFFFF;"); }
+                    else if("8".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #C0C0C0;"); }
+                    else if("*".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #000000;"); }
+                }
+            }
+        });
+        Anchor.setStyle(
+                "-fx-background-color: #252526;" 
+        );
+        Board.setStyle(
+            "-fx-background-color: #363636;" +//Grey21 
+            "-fx-border-color: #363636;" + 
+            "-fx-border-width: 2;" + 
+            "-fx-border-style: solid;"
+        );
+        for(Node node : Board.getChildren()){
+            @SuppressWarnings("null")
+            int c = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
+            @SuppressWarnings("null")
+            int r = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
+            
+            if(node instanceof Button)
+            {
+                Button button = (Button)node;
+                buttons[c][r] = button;
+                button.setVisible(true);
+                button.setStyle(
+"-fx-background-color: #505050;"
+                );
+                button.setOnMouseClicked(event->ButtonClicked(c,r,event));
+            }
+            else if(node instanceof Label){
+                Label label = (Label)node;
+                label.setText("0");
+                label.setAlignment(Pos.CENTER);
+                label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                label.setFont(Font.font("Times New Roman",25));
+                label.setStyle(
+                        "-fx-background-color: #363636;"
+                );
+                label.setVisible(false);
+                labels[c][r] = label;
+            }
+        }
+        PopulateLabels();
+        for(int i = 0; i < COL; i++)
+        {
+            for(int j = 0; j < ROW; j++)
+            {
+            if("1".equals(labels[i][j].getText()))
+                {
+                    // Cyan/Bright Blue
+                    labels[i][j].setStyle("-fx-text-fill: #00D0FF;");
+                }
+                else if("2".equals(labels[i][j].getText()))
+                {
+                    // Bright Spring Green
+                    labels[i][j].setStyle("-fx-text-fill: #00FF7F;");
+                }
+                else if("3".equals(labels[i][j].getText()))
+                {
+                    // Soft Red
+                    labels[i][j].setStyle("-fx-text-fill: #FF4040;");
+                }
+                else if("4".equals(labels[i][j].getText()))
+                {
+                    // Lightened Navy Blue
+                    labels[i][j].setStyle("-fx-text-fill: #5050FF;");
+                }
+                else if("5".equals(labels[i][j].getText()))
+                {
+                    // Bright Orange/Gold
+                    labels[i][j].setStyle("-fx-text-fill: #FFA500;");
+                }
+                else if("6".equals(labels[i][j].getText()))
+                {
+                    // Bright Teal/Aqua
+                    labels[i][j].setStyle("-fx-text-fill: #00FFFF;");
+                }
+                else if("7".equals(labels[i][j].getText()))
+                {
+                    // White (for contrast on a dark background)
+                    labels[i][j].setStyle("-fx-text-fill: #FFFFFF;");
+                }
+                else if("8".equals(labels[i][j].getText()))
+                {
+                    // Light Gray
+                    labels[i][j].setStyle("-fx-text-fill: #C0C0C0;");
+                }
+                else if("*".equals(labels[i][j].getText()))
+                {
+                    //Black
+                    labels[i][j].setStyle("-fx-text-fill: #000000;");
+                }
+            }
+        }
+    }
+    
+    @SuppressWarnings("ConvertToStringSwitch")
+    private void ButtonClicked(int c, int r, javafx.scene.input.MouseEvent event){
+        if (event.getButton() == MouseButton.PRIMARY) {    
+            if("🚩".equals(buttons[c][r].getText()))return;
+            if("*".equals(labels[c][r].getText()))
+            {
+
+                Anchor.getChildren().add(MV); 
+                MV.setVisible(true);
+                MP.stop();
+                MP.seek(javafx.util.Duration.ZERO);
+                MP.play();
+            }
+            else if("".equals(labels[c][r].getText()))
+                revealCell(c,r);
+            else
+            {
+
+                buttons[c][r].setVisible(false);
+                labels[c][r].setVisible(true);
+                NumOfRevealed+=1;
+                if(VisitedAll()){
+                    Congrats();
+                }
+            }
+        }
+        else
+        {
+            
+            if("".equals(buttons[c][r].getText())){
+                buttons[c][r].setText("🚩");
+                buttons[c][r].setFont(Font.font("Times New Roman",16));
+                buttons[c][r].setStyle(
+                    "-fx-text-fill: white;" +
+                    "-fx-background-color: #505050;"
+                );
+                if(VisitedAll()){
+                    Congrats();
+                }
+            }
+            else if("🚩".equals(buttons[c][r].getText())){
+                buttons[c][r].setText("");
+            }
+        }
+    }
+
+    private void PopulateLabels()
+    {
+        int placed = 0;
+        Random random = new Random();
+        while(placed<10)
+        {
+            int row = random.nextInt(ROW);
+            int col = random.nextInt(COL);
+            if(!"*".equals(labels[col][row].getText()))
+            {
+                labels[col][row].setText("*");
+                Mines[placed][0] = col;
+                Mines[placed][1] = row;
+                placed++;
+            }
+        }
+        PlaceNums();
+    }
+    private void PlaceNums()
+    {
+        for(int i = 0; i < MINES; i++)
+        {
+            int c = Mines[i][0];
+            int r = Mines[i][1];
+            for(int j = c-1; j <= c+1; j++)
+            {
+                for(int k = r-1; k <= r+1; k++)
+                {
+                    if (j < 0 || j >= COL || k < 0 || k >= ROW)
+                        continue;
+
+                    if (k == r && j == c)
+                        continue;
+
+                    if (!"*".equals(labels[j][k].getText()))
+                    {
+                        int num = Integer.parseInt(labels[j][k].getText());
+                        num++;
+                        String s = "" + num;
+                        labels[j][k].setText(s);
+                    }
+                }
+            }
+        }
+        
+        for(int i = 0; i < COL; i++)
+        {
+            for(int j = 0; j < ROW; j++)
+            {
+                if("0".equals(labels[i][j].getText()))
+                {
+                    labels[i][j].setText("");
+                }
+            }
+        }
+    }
+    
+    private void revealCell(int c, int r) {
+        
+        if (c < 0 || c >= COL || r < 0 || r >= ROW) {
+            return; 
+        }
+        
+        Button button = buttons[c][r];
+        
+        if (!button.isVisible() || "🚩".equals(button.getText())) {
+            return;
+        }
+
+        button.setVisible(false);
+        NumOfRevealed+=1;
+        labels[c][r].setVisible(true);
+        
+        if (VisitedAll()) {
+            Congrats();
+            return;
+        }
+        
+        String content = labels[c][r].getText();
+        if (!"".equals(content) && !"*".equals(content)) {
+            return; 
+        }
+        
+        if ("".equals(content)) {
+            for (int i = c - 1; i <= c + 1; i++) {
+                for (int j = r - 1; j <= r + 1; j++) {
+                    
+                    if (i == c && j == r) continue; 
+                                        
+                    revealCell(i, j);
+                }
+            }
+        }
+    }
+    
+    private boolean VisitedAll(){
+        return NumOfRevealed==NonMines;
+    }
+    
+    private void Congrats(){
+        Head.setText("Congratulations!!");
+        Head.setFont(Font.font("Times New Roman", FontWeight.BOLD, 24));
+        Head.setVisible(true);    
+    }
+}

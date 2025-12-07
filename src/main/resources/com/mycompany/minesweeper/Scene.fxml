@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Anchor" prefHeight="642.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.minesweeper.Controller">
+	<children>
+		<GridPane fx:id="Board" gridLinesVisible="true" layoutX="196.0" layoutY="111.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="390.0">
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Button fx:id="B38" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+				<Label fx:id="L38" text="" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+				<Button fx:id="B28" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+				<Label fx:id="L28" text="" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+				<Button fx:id="B18" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+				<Label fx:id="L18" text="" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+				<Button fx:id="B08" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="8" />
+				<Label fx:id="L08" text="" GridPane.rowIndex="8" />
+				<Button fx:id="B78" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+				<Label fx:id="L78" text="" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+				<Button fx:id="B68" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+				<Label fx:id="L68" text="" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+				<Button fx:id="B58" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+				<Label fx:id="L58" text="" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+				<Button fx:id="B48" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+				<Label fx:id="L48" text="" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+				<Button fx:id="B88" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+				<Label fx:id="L88" text="" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+
+				<Button fx:id="B07" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="7" />
+				<Label fx:id="L07" text="" GridPane.rowIndex="7" />
+				<Button fx:id="B37" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+				<Label fx:id="L37" text="" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+				<Button fx:id="B47" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+				<Label fx:id="L47" text="" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+				<Button fx:id="B57" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+				<Label fx:id="L57" text="" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+				<Button fx:id="B67" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+				<Label fx:id="L67" text="" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+				<Button fx:id="B77" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+				<Label fx:id="L77" text="" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+				<Button fx:id="B27" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+				<Label fx:id="L27" text="" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+				<Button fx:id="B17" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+				<Label fx:id="L17" text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+				<Button fx:id="B87" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+				<Label fx:id="L87" text="" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+
+				<Button fx:id="B06" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="6" />
+				<Label fx:id="L06" text="" GridPane.rowIndex="6" />
+				<Button fx:id="B36" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+				<Label fx:id="L36" text="" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+				<Button fx:id="B46" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+				<Label fx:id="L46" text="" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+				<Button fx:id="B56" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+				<Label fx:id="L56" text="" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+				<Button fx:id="B66" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+				<Label fx:id="L66" text="" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+				<Button fx:id="B76" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+				<Label fx:id="L76" text="" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+				<Button fx:id="B26" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+				<Label fx:id="L26" text="" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+				<Button fx:id="B16" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+				<Label fx:id="L16" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+				<Button fx:id="B86" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+				<Label fx:id="L86" text="" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+
+				<Button fx:id="B05" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="5" />
+				<Label fx:id="L05" text="" GridPane.rowIndex="5" />
+				<Button fx:id="B35" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+				<Label fx:id="L35" text="" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+				<Button fx:id="B45" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+				<Label fx:id="L45" text="" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+				<Button fx:id="B55" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+				<Label fx:id="L55" text="" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+				<Button fx:id="B65" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+				<Label fx:id="L65" text="" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+				<Button fx:id="B75" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+				<Label fx:id="L75" text="" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+				<Button fx:id="B25" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+				<Label fx:id="L25" text="" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+				<Button fx:id="B15" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+				<Label fx:id="L15" text="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+				<Button fx:id="B85" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+				<Label fx:id="L85" text="" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+
+				<Button fx:id="B04" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="4" />
+				<Label fx:id="L04" text="" GridPane.rowIndex="4" />
+				<Button fx:id="B34" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+				<Label fx:id="L34" text="" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+				<Button fx:id="B44" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+				<Label fx:id="L44" text="" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+				<Button fx:id="B54" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+				<Label fx:id="L54" text="" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+				<Button fx:id="B64" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+				<Label fx:id="L64" text="" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+				<Button fx:id="B74" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+				<Label fx:id="L74" text="" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+				<Button fx:id="B24" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+				<Label fx:id="L24" text="" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+				<Button fx:id="B14" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+				<Label fx:id="L14" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+				<Button fx:id="B84" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+				<Label fx:id="L84" text="" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+
+				<Button fx:id="B03" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="3" />
+				<Label fx:id="L03" text="" GridPane.rowIndex="3" />
+				<Button fx:id="B33" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+				<Label fx:id="L33" text="" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+				<Button fx:id="B43" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+				<Label fx:id="L43" text="" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+				<Button fx:id="B53" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+				<Label fx:id="L53" text="" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+				<Button fx:id="B63" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+				<Label fx:id="L63" text="" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+				<Button fx:id="B73" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+				<Label fx:id="L73" text="" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+				<Button fx:id="B23" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+				<Label fx:id="L23" text="" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+				<Button fx:id="B13" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<Label fx:id="L13" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<Button fx:id="B83" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+				<Label fx:id="L83" text="" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+
+				<Button fx:id="B02" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="2" />
+				<Label fx:id="L02" text="" GridPane.rowIndex="2" />
+				<Button fx:id="B32" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+				<Label fx:id="L32" text="" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+				<Button fx:id="B42" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+				<Label fx:id="L42" text="" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+				<Button fx:id="B52" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+				<Label fx:id="L52" text="" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+				<Button fx:id="B62" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+				<Label fx:id="L62" text="" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+				<Button fx:id="B72" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+				<Label fx:id="L72" text="" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+				<Button fx:id="B22" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+				<Label fx:id="L22" text="" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+				<Button fx:id="B12" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Label fx:id="L12" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Button fx:id="B82" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+				<Label fx:id="L82" text="" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+
+				<Button fx:id="B01" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.rowIndex="1" />
+				<Label fx:id="L01" text="" GridPane.rowIndex="1" />
+				<Button fx:id="B31" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+				<Label fx:id="L31" text="" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+				<Button fx:id="B41" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+				<Label fx:id="L41" text="" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+				<Button fx:id="B51" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+				<Label fx:id="L51" text="" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+				<Button fx:id="B61" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+				<Label fx:id="L61" text="" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+				<Button fx:id="B71" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+				<Label fx:id="L71" text="" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+				<Button fx:id="B21" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+				<Label fx:id="L21" text="" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+				<Button fx:id="B11" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Label fx:id="L11" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Button fx:id="B81" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+				<Label fx:id="L81" text="" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+
+				<Button fx:id="B00" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" />
+				<Label fx:id="L00" text="" />
+				<Button fx:id="B10" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="1" />
+				<Label fx:id="L10" text="" GridPane.columnIndex="1" />
+				<Button fx:id="B20" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="2" />
+				<Label fx:id="L20" text="" GridPane.columnIndex="2" />
+				<Button fx:id="B30" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="3" />
+				<Label fx:id="L30" text="" GridPane.columnIndex="3" />
+				<Button fx:id="B40" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="4" />
+				<Label fx:id="L40" text="" GridPane.columnIndex="4" />
+				<Button fx:id="B50" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="5" />
+				<Label fx:id="L50" text="" GridPane.columnIndex="5" />
+				<Button fx:id="B60" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="6" />
+				<Label fx:id="L60" text="" GridPane.columnIndex="6" />
+				<Button fx:id="B70" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="7" />
+				<Label fx:id="L70" text="" GridPane.columnIndex="7" />
+				<Button fx:id="B80" mnemonicParsing="false" prefHeight="59.0" prefWidth="45.0" GridPane.columnIndex="8" />
+				<Label fx:id="L80" text="" GridPane.columnIndex="8" />
+			</children>
+		</GridPane>
+      <Label fx:id="GameOver" alignment="CENTER" layoutX="298.0" layoutY="523.0" prefHeight="43.0" prefWidth="186.0" text="Game Over!" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="Head" alignment="CENTER" layoutX="236.0" layoutY="14.0" prefHeight="64.0" prefWidth="309.0" text="Sweep The Mines!" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="Restart" layoutX="329.0" layoutY="584.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Restart" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="24.0" />
+         </font>
+      </Button>
+	</children>
+</AnchorPane>
