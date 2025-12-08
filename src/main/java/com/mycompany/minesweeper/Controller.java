@@ -34,11 +34,13 @@ public class Controller implements Initializable {
     MediaView MV;
     int NonMines = ROW*COL-MINES;
     int NumOfRevealed = 0;
+    int NumMinesFlagged = 0;
     private final Button[][] buttons = new Button[COL][ROW];
     private final Label[][] labels = new Label[COL][ROW];
     int[][] Mines = new int[MINES][2];
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        NumMinesFlagged = 0;
         GameOver.setVisible(false);
         String path = App.class.getResource("Bomb.mp4").toExternalForm();
         Media M = new Media(path);
@@ -70,7 +72,8 @@ public class Controller implements Initializable {
         Restart.setStyle(
             "-fx-background-color: #505050;"
         );
-        Restart.setOnMouseClicked(event->{        
+        Restart.setOnMouseClicked(event->{   
+            NumMinesFlagged = 0;
             GameOver.setVisible(false);
             Head.setText("Sweep The Mines!");
             Head.setFont(Font.font("Times New Roman",FontWeight.BOLD,24));
@@ -226,9 +229,9 @@ public class Controller implements Initializable {
             }
         }
         else
-        {
-            
+        {    
             if("".equals(buttons[c][r].getText())){
+                if("*".equals(labels[c][r].getText()))NumMinesFlagged++;
                 buttons[c][r].setText("🚩");
                 buttons[c][r].setFont(Font.font("Times New Roman",16));
                 buttons[c][r].setStyle(
@@ -240,6 +243,7 @@ public class Controller implements Initializable {
                 }
             }
             else if("🚩".equals(buttons[c][r].getText())){
+                if("*".equals(labels[c][r].getText()))NumMinesFlagged--;
                 buttons[c][r].setText("");
             }
         }
@@ -341,12 +345,32 @@ public class Controller implements Initializable {
     }
     
     private boolean VisitedAll(){
-        return NumOfRevealed==NonMines;
+        return ((NumOfRevealed==NonMines)||(NumMinesFlagged==MINES));
     }
     
     private void Congrats(){
         Head.setText("Congratulations!!");
         Head.setFont(Font.font("Times New Roman", FontWeight.BOLD, 24));
         Head.setVisible(true);    
+        for(int i = 0; i < COL; i++)
+        {
+            for(int j = 0; j < ROW; j++)
+            {
+                if("*".equals(labels[i][j].getText())){
+                    buttons[i][j].setDisable(true);
+                    buttons[i][j].setText("🚩");
+                    buttons[i][j].setFont(Font.font("Times New Roman",16));
+                    buttons[i][j].setStyle(
+                        "-fx-text-fill: white;" +
+                        "-fx-background-color: #505050;"
+                    );
+                }
+                else if(buttons[i][j].isVisible()){
+                    buttons[i][j].setDisable(true);
+                    buttons[i][j].setVisible(false);
+                    labels[i][j].setVisible(true);
+                }
+            }
+        }
     }
 }
