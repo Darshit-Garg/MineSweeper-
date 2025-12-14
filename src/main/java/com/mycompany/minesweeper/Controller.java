@@ -34,7 +34,7 @@ public class Controller implements Initializable {
     private AnimationTimer gameTimer; // <--- New Timer object
     private long lastTime = 0; // To store the time of the previous frame (in nanoseconds)
     private long totalElapsedTime = 0; // To accumulate elapsed time (in nanoseconds)
-    private final StringProperty timeDisplay = new SimpleStringProperty("0.00");
+    private StringProperty timeDisplay = new SimpleStringProperty("0.00");
     int ROW = 9;
     int COL = 9;
     int MINES = 10;
