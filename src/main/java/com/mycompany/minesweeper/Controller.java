@@ -8,6 +8,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
 import java.util.Random;
+import javafx.animation.AnimationTimer;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
@@ -26,7 +29,12 @@ public class Controller implements Initializable {
     @FXML private AnchorPane Anchor;
     @FXML private Button Restart;
     @FXML private Label Head;
+    @FXML private Label Timer;
     
+    private AnimationTimer gameTimer; // <--- New Timer object
+    private long lastTime = 0; // To store the time of the previous frame (in nanoseconds)
+    private long totalElapsedTime = 0; // To accumulate elapsed time (in nanoseconds)
+    private final StringProperty timeDisplay = new SimpleStringProperty("0.00");
     int ROW = 9;
     int COL = 9;
     int MINES = 10;
@@ -109,6 +117,8 @@ public class Controller implements Initializable {
                     else if("*".equals(text)) { labels[i][j].setStyle("-fx-text-fill: #000000;"); }
                 }
             }
+            stopTimer();
+            setupTimer();
         });
         Anchor.setStyle(
                 "-fx-background-color: #252526;" 
@@ -200,6 +210,64 @@ public class Controller implements Initializable {
                 }
             }
         }
+        setupTimer();
+    }
+    
+    private void setupTimer() {
+    // Bind the TimerLabel text to the timeDisplay property (same as before)
+        Timer.textProperty().bind(timeDisplay);
+        Timer.setFont(Font.font("Times New Roman", FontWeight.BOLD, 24));
+        Timer.setStyle("-fx-text-fill: #FFFFFF;");
+        timeDisplay.set("0:00.00");
+
+        gameTimer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (lastTime > 0) {
+                    // Calculate time elapsed since the last frame call in nanoseconds
+                    totalElapsedTime += now - lastTime;
+
+                    // Update the UI only if a significant time has passed (e.g., every 10ms)
+                    // This ensures smooth updates while avoiding excessive calculations every frame
+                    if (totalElapsedTime >= 10_000_000) { // 10 million nanoseconds = 10 milliseconds
+                        updateTime(totalElapsedTime);
+                    }
+                }
+                lastTime = now;
+            }
+        };
+    }
+
+    private void startTimer() {
+        // Reset accumulated time and start the timer
+        totalElapsedTime = 0;
+        lastTime = 0; // Setting lastTime to 0 ensures the first frame doesn't calculate massive elapsed time
+        timeDisplay.set("0:00.00");
+        gameTimer.start();
+    }
+
+    private void stopTimer() {
+        gameTimer.stop();
+    }    
+    
+    // Original signature was: private void updateTime()
+    private void updateTime(long nanoseconds) { // <--- CHANGE SIGNATURE
+        // Convert nanoseconds to milliseconds
+        long elapsedMillis = nanoseconds / 1_000_000;
+
+        // Extract time components
+        long totalSeconds = elapsedMillis / 1000;
+
+        long minutes = totalSeconds / 60;
+        long seconds = totalSeconds % 60;
+
+        // Centiseconds: The remaining milliseconds divided by 10 (00-99)
+        long centiseconds = (elapsedMillis % 1000) / 10; 
+
+        // Format as Minutes:Seconds.Centiseconds (e.g., 5:03.25)
+        String formattedTime = String.format("%d:%02d.%02d", minutes, seconds, centiseconds);
+
+        timeDisplay.set(formattedTime);
     }
     
     @SuppressWarnings("ConvertToStringSwitch")
@@ -208,7 +276,7 @@ public class Controller implements Initializable {
             if("🚩".equals(buttons[c][r].getText()))return;
             if("*".equals(labels[c][r].getText()))
             {
-
+                stopTimer();
                 Anchor.getChildren().add(MV); 
                 MV.setVisible(true);
                 MP.stop();
@@ -223,6 +291,7 @@ public class Controller implements Initializable {
                 buttons[c][r].setVisible(false);
                 labels[c][r].setVisible(true);
                 NumOfRevealed+=1;
+                if(NumOfRevealed==1 && NumMinesFlagged==0)startTimer();
                 if(VisitedAll()){
                     Congrats();
                 }
@@ -238,6 +307,7 @@ public class Controller implements Initializable {
                     "-fx-text-fill: white;" +
                     "-fx-background-color: #505050;"
                 );
+                if((NumOfRevealed==0 && NumMinesFlagged==1) || (NumOfRevealed==0 && NumMinesFlagged==0))startTimer();
                 if(VisitedAll()){
                     Congrats();
                 }
@@ -321,6 +391,7 @@ public class Controller implements Initializable {
         button.setVisible(false);
         NumOfRevealed+=1;
         labels[c][r].setVisible(true);
+        if(NumOfRevealed==1 && NumMinesFlagged==0)startTimer();
         
         if (VisitedAll()) {
             Congrats();
@@ -349,6 +420,7 @@ public class Controller implements Initializable {
     }
     
     private void Congrats(){
+        stopTimer();
         Head.setText("Congratulations!!");
         Head.setFont(Font.font("Times New Roman", FontWeight.BOLD, 24));
         Head.setVisible(true);    
