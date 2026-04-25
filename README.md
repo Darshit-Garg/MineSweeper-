@@ -38,6 +38,7 @@ The project recreates the classic puzzle game where players uncover tiles and av
 
 ## Screenshots
 <img width="951" height="788" alt="image" src="https://github.com/user-attachments/assets/5bb638d2-7de5-4b5a-9e3b-9a16352c5bb4" />
+<br>
 <img width="972" height="791" alt="image" src="https://github.com/user-attachments/assets/9941496c-67c4-4070-aad1-191178ac0217" />
 
 ## Author
